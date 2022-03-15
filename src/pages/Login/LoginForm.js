@@ -1,11 +1,10 @@
 import React from 'react'
 import {Form, Input, Row, Col, message} from 'antd'
-import { randomNum } from '../../common/util'
+import {randomNum, sm3Pass} from '../../common/util'
 import PromptBox from '../../components/PromptBox/index'
 import { withRouter } from 'react-router-dom'
 import { post } from '../../common/ajax'
 import {authenticateSuccess} from "../../common/session";
-import CryptoJS from 'crypto-js'
 
 @withRouter @Form.create()
 class LoginForm extends React.Component {
@@ -52,16 +51,10 @@ class LoginForm extends React.Component {
             return
         }
 
-        // 密码前端做加盐处理
-        const salt="9d5b364d";
-        let inputPass = values.password;
-        let str_password = "" + salt.charAt(0) + salt.charAt(2) + inputPass + salt.charAt(5) + salt.charAt(4);
-        let password = CryptoJS.MD5(str_password).toString(); // md5加密
-
         // 登陆
         const res = await post('/uaa/user/doLogin', {
             mobile: values.mobile,
-            password: password
+            password: sm3Pass(values.password)
         });
         if (res.code !== 200) {
             this.props.form.setFields({
@@ -122,7 +115,7 @@ class LoginForm extends React.Component {
         const { focusItem, code } = this.state;
         return (
             <div>
-                <h3 className="title">登录</h3>
+                <h3 className="title">客户登录</h3>
                 <Form hideRequiredMark>
                     <Form.Item
                         help={<PromptBox info={getFieldError('mobile') && getFieldError('mobile')[0]} />}
@@ -136,9 +129,11 @@ class LoginForm extends React.Component {
                             rules: [
                                 { required: true, message: '请输入登陆手机号' },
                                 { pattern: /^[^\s']+$/, message: '不能输入特殊字符' },
+                                { min: 11, message: '手机号至少为11位' },
                             ]
                         })(
                             <Input
+                                maxLength={11}
                                 className="myInput"
                                 onFocus={() => this.setState({ focusItem: 0 })}
                                 onBlur={() => this.setState({ focusItem: -1 })}
@@ -211,7 +206,6 @@ class LoginForm extends React.Component {
                         </div>
                     </Form.Item>
                 </Form>
-
                 <div className="footer">欢迎登陆秒杀商品系统</div>
             </div>
         )

@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import { Helmet } from "react-helmet";
 import '../../styles/list.css';
 import {get} from '../../common/ajax'
-import {message} from "antd";
+import {message, Button} from "antd";
 import {logout} from "../../common/session";
+import EditPasswordModal from './EditPasswordModal'
 
 class GoodsList extends Component {
 
@@ -11,6 +12,7 @@ class GoodsList extends Component {
         super(props);
         this.state = {
             goodsList:[],
+            passwordVisible: false,  // 控制修改密码的模态框
         }
     }
 
@@ -124,6 +126,13 @@ class GoodsList extends Component {
         this.props.history.push("/detail/" + goodsId);
     }
 
+    // 展开/关闭修改密码模态框
+    togglePasswordVisible = (visible) => {
+        this.setState({
+            passwordVisible: visible
+        })
+    };
+
     render() {
 
         return (
@@ -137,7 +146,7 @@ class GoodsList extends Component {
                     <div className="container">
                         <div className="top-bar-nav">
                             <a href='/order'>客户订单</a><span>|</span>
-                            <a href='/goods'>开放平台</a><span>|</span>
+                            <Button onClick={() => this.togglePasswordVisible(true)}>更换密码</Button><span>|</span>
                         </div>
                         <div className="top-bar-cart">
                             <button type="submit" onClick={() => this.user_logout()}>注销</button>
@@ -200,7 +209,7 @@ class GoodsList extends Component {
 
                     </div>
                 </div>
-
+                <EditPasswordModal toggleVisible={this.togglePasswordVisible} visible={this.state.passwordVisible} />
             </div>
         )
     }

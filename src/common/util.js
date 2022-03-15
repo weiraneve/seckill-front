@@ -1,24 +1,8 @@
-import CryptoJS from 'crypto-js'
 import { Form } from 'antd'
 
 
-const SECRET_KEY = 'front_666666';
+// const SECRET_KEY = 'front_666666';
 
-/**
- * 防抖函数
- * @param {*} func 
- * @param {*} wait 
- */
-export function debounce(func, wait = 500) {
-    let timeout;  // 定时器变量
-    return function (event) {
-        clearTimeout(timeout);  // 每次触发时先清除上一次的定时器,然后重新计时
-        event.persist && event.persist();   //保留对事件的引用
-        timeout = setTimeout(() => {
-            func(event)
-        }, wait);  // 指定 xx ms 后触发真正想进行的操作 handler
-    };
-}
 
 /**
  * 节流函数
@@ -56,11 +40,12 @@ export function randomNum(min, max) {
 }
 
 /**
- * 加密函数，加密同一个字符串生成的都不相同
+ * sm3加密函数
  * @param {*} str 
  */
 export function encrypt(str) {
-    return CryptoJS.AES.encrypt(JSON.stringify(str), SECRET_KEY).toString();
+    const sm3 = require('sm-crypto').sm3 // sm3加密
+    return sm3(JSON.stringify(str));
 }
 
 /**
@@ -68,8 +53,8 @@ export function encrypt(str) {
  * @param {*} str 
  */
 export function decrypt(str) {
-    const bytes = CryptoJS.AES.decrypt(str, SECRET_KEY);
-    return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    // 暂且删除
+    return null;
 }
 
 /**
@@ -120,3 +105,16 @@ export function preloadingImages(arr) {
           })
     }
   }
+
+/**
+ * sm3加盐加密
+ */
+export function sm3Pass(password) {
+    // 密码前端做sm3加盐加密处理
+    const salt="3a41dx1d";
+    let inputPass = password;
+    let str_password = "" + salt.charAt(0) + salt.charAt(2) + inputPass + salt.charAt(5) + salt.charAt(4);
+    const sm3 = require('sm-crypto').sm3 // sm3加密
+    let get_password = sm3(str_password) // 杂凑，单向加密
+    return get_password;
+}

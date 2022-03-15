@@ -1,5 +1,6 @@
 # 前言
-上传的第一版
+上传的第二版
+对应后端项目seckillcloud 第五版
 
 # 简介
 针对前后端分离的需求，构建了用React框架的客户端前端服务器。负责前端的客户端秒杀服务器。
@@ -20,4 +21,6 @@
 - 有时候启动时会报错babel-jest错误，看具体报错内容，去lock文件中删除与项目制定babel-jest版本不符的依赖，再删除node_modules包，再yarn install 命令重新安装。
 
 # 参考
+- [国密算法sm2、sm3和sm4的js版](https://github.com/JuneAndGreen/sm-crypto)
+
 - [自己总结](./THINK.md)
