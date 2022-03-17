@@ -45,7 +45,7 @@ class GoodsList extends Component {
                 <div className='info'>
                     <div className='name' onClick={() => this.toDetail(goodsId)}>{goodsName}</div>
                     <p className='tips'>{goodsTitle}</p>
-                    <p className='price'>{goodsPrice}</p>
+                    <p className='price'>{goodsPrice}元</p>
                     <div className='btn' onClick={() => this.toDetail(goodsId)}>进入秒杀详情</div>
                 </div>
             </li>

@@ -149,7 +149,7 @@ class GoodsDetail extends Component {
                             <h2 id="goodsName">{this.state.goods.goodsName}</h2>
                             <p className="title" id="goodsTitle"> </p>
                             <p>
-                                <span className="price1" id="goodsPrice">{this.state.goods.goodsPrice}</span>
+                                <span className="price1" id="goodsPrice">{this.state.goods.goodsPrice}元</span>
                             </p>
                             <div className="seckill_data">
                                 <div>
