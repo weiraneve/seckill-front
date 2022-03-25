@@ -162,7 +162,7 @@ class GoodsList extends Component {
 
                 <div className="seckill">
                     <div className="seckill-head">
-                        <h1>秒杀</h1>
+                        <h1>商品秒杀</h1>
                     </div>
 
                     <div className="container">

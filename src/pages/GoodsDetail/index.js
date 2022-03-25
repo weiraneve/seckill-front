@@ -22,7 +22,6 @@ class GoodsDetail extends Component {
 
     componentDidMount() {
         this.getDetail().then();
-        this.countDown().then();
     }
 
     // 获得商品细节
@@ -43,10 +42,15 @@ class GoodsDetail extends Component {
         } else {
             message.error('客户端请求有误');
         }
+        this.countDown().then();
     }
 
     // 获得秒杀路径，也是秒杀流程的起手式
     getSeckillPath = async () => {
+        if (this.state.disabled) {
+            message.error("秒杀开始时间有误");
+            return;
+        }
         let goodsId = this.props.match.params.goodsId;
         const res = await get('/mission/seckill/getPath', {
             goodsId:goodsId
@@ -89,8 +93,9 @@ class GoodsDetail extends Component {
             } else if (result === 0) { // 继续轮询
                 setTimeout(function () {
                     this.getSeckillResult(goodsId).then();
-                }, 200)
-            } else {
+                    message.loading('正在排队中······', 0);
+                }, 2000) // 每2s短轮训服务器秒杀结果
+            } else if (result > 0) {
                 message.success("恭喜你，秒杀成功！查看订单？")
             }
         } else if (res.msg) {
@@ -170,7 +175,7 @@ class GoodsDetail extends Component {
                             </div>
                             <div>
                                 <Popconfirm title='您确定秒杀购买当下商品并下单吗？' disabled={this.state.disabled} onConfirm={() => this.getSeckillPath()}>
-                                    <button className="btn" type="button" id="buyButton">立即秒杀</button>
+                                    <button type="button" className="btn"  id="buyButton">立即秒杀</button>
                                 </Popconfirm>
                             </div>
                         </div>
