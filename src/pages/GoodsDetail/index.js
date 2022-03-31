@@ -42,6 +42,12 @@ class GoodsDetail extends Component {
         } else {
             message.error('客户端请求有误');
         }
+        // 库存不大于0，则秒杀按钮置灰
+        if (!this.state.stockCount > 0) {
+            this.setState({
+                disabled: true
+            })
+        }
         this.countDown().then();
     }
 
