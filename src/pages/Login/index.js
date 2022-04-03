@@ -16,7 +16,7 @@ class Login extends React.Component {
 
     componentDidMount() {
         // 防止用户通过浏览器的前进后退按钮来进行路由跳转
-        // 当用户登陆后再通过浏览器的后退按钮回到登录页时，再点击前进按钮可以直接回到首页
+        // 当用户登录后再通过浏览器的后退按钮回到登录页时，再点击前进按钮可以直接回到首页
         if (!!isAuthenticated()) {
             this.props.history.go(1)   // 不然他后退或者后退了直接登出
         }
@@ -43,7 +43,7 @@ class Login extends React.Component {
             <div>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>客户登陆界面</title>
+                    <title>客户登录界面</title>
                 </Helmet>
 
                 <Background url={require('../../assets/images/bg.jpg')}>

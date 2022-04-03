@@ -4,7 +4,7 @@ import { TweenLite, Circ } from "gsap/all";
 import { throttle } from '../../common/util'
 import Loading from '../../components/Loading'
 
-// 背景组件，主要用于登陆界面
+// 背景组件，主要用于登录界面
 class Background extends React.Component {
     static propTypes = {
         url: PropTypes.string

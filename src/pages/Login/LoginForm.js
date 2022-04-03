@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
             return
         }
 
-        // 登陆
+        // 登录
         const res = await post('/uaa/user/doLogin', {
             mobile: values.mobile,
             password: sm3Pass(values.password)
@@ -127,7 +127,7 @@ class LoginForm extends React.Component {
                         {getFieldDecorator('mobile', {
                             validateFirst: true,
                             rules: [
-                                { required: true, message: '请输入登陆手机号' },
+                                { required: true, message: '请输入登录手机号' },
                                 { pattern: /^[^\s']+$/, message: '不能输入特殊字符' },
                                 { min: 11, message: '手机号至少为11位' },
                             ]
@@ -138,7 +138,7 @@ class LoginForm extends React.Component {
                                 onFocus={() => this.setState({ focusItem: 0 })}
                                 onBlur={() => this.setState({ focusItem: -1 })}
                                 onPressEnter={this.onSubmit}
-                                placeholder="登陆手机号"
+                                placeholder="登录手机号"
                             />
                         )}
                     </Form.Item>
@@ -201,12 +201,12 @@ class LoginForm extends React.Component {
                     </Form.Item>
                     <Form.Item>
                         <div className="btn-box">
-                            <div className="loginBtn" onClick={this.onSubmit}>登陆</div>
+                            <div className="loginBtn" onClick={this.onSubmit}>登录</div>
                             <div className="registerBtn" onClick={this.goRegister}>注册</div>
                         </div>
                     </Form.Item>
                 </Form>
-                <div className="footer">欢迎登陆秒杀商品系统</div>
+                <div className="footer">欢迎登录秒杀商品系统</div>
             </div>
         )
     }

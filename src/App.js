@@ -10,7 +10,7 @@ import Login from './pages/Login'
 @withRouter
 class App extends React.Component {
 
-  // PrivateRoute path属性设为/，意为只要登陆token有效，则一切跳转除登陆页面之外都跳转为组件首页
+  // PrivateRoute path属性设为/，意为只要登录token有效，则一切跳转除登录页面之外都跳转为组件首页
   render() {
     return (
       <Switch>

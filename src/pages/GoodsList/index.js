@@ -113,7 +113,7 @@ class GoodsList extends Component {
         };
     }
 
-    // 注销并退出登陆
+    // 注销并退出登录
     user_logout = () => {
         get('/uaa/user/logout').then();
         logout();
