@@ -84,7 +84,7 @@ export async function get(url, param) {
             }
         });
     }
-    const result = await response.json();
+    const result = response.json();
     if (!response.ok) {
         if (response.status === 200) {
             if (result.code !== 200) {
@@ -129,7 +129,7 @@ export async function post(url, param) {
             body: JSON.stringify(param)
         });
     }
-    const result = await response.json();
+    const result = response.json();
     if (!response.ok) {
         if (response.status === 200) {
             if (result.code !== 200) {
@@ -174,7 +174,7 @@ export async function patch(url, param) {
             body: JSON.stringify(param)
         });
     }
-    const result = await response.json();
+    const result = response.json();
     if (!response.ok) {
         if (response.status === 200) {
             if (result.code !== 200) {
@@ -219,7 +219,7 @@ export async function put(url, param) {
             body: JSON.stringify(param)
         });
     }
-    const result = await response.json();
+    const result = response.json();
     if (!response.ok) {
         if(response.status === 200) {
             if (result.code !== 200) {
@@ -259,7 +259,7 @@ export async function del(url, param) {
             }
         });
     }
-    const result = await response.json();
+    const result = response.json();
     if (!response.ok) {
         if(response.status === 200) {
             if (result.code !== 200) {

@@ -1,6 +1,4 @@
-const LOGIN_TOKEN_NAME = 'seckill_login_token';
-// const LOGIN_COOKIES_NAME = 'seckill_login_token';
-
+const LOGIN_TOKEN_NAME = 'Authorization';
 
 // 验证是否已经认证，返回浏览器localStorage存储的JWT或cookie
 export function isAuthenticated() {
@@ -29,11 +27,7 @@ function _getStorage(name) {
 }
 
 function _setStorage(name, value) {
-  let item = localStorage.setItem(name, value);
-  if (item) {
-    return item;
-  }
-  return ''
+  localStorage.setItem(name, value);
 }
 
 // function _getCookie(name) {
