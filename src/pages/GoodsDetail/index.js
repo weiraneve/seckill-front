@@ -97,7 +97,7 @@ class GoodsDetail extends Component {
             const result = res.data;
             switch (true) {
                 case result === 0: // 继续轮询
-                    setTimeout(() => this.getSeckillResult(goodsId).then(), 100) // 每2s短轮训服务器秒杀结果
+                    setTimeout(() => this.getSeckillResult(goodsId).then(), 500) // 每0.5s短轮训服务器秒杀结果
                     break;
                 case result > 0:
                     message.success("恭喜你，秒杀成功!");
