@@ -6683,7 +6683,6 @@ jest-config@^24.9.0:
     "@babel/core" "^7.1.0"
     "@jest/test-sequencer" "^24.9.0"
     "@jest/types" "^24.9.0"
-    babel-jest "^24.9.0"
     chalk "^2.0.1"
     glob "^7.1.1"
     jest-environment-jsdom "^24.9.0"
