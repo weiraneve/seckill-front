@@ -24,7 +24,7 @@ class GoodsList extends Component {
     getGoodsList = async () => {
         const res = await get('/mission/goods/getGoodsList')
         if (res.code !== 200) {
-            message.error('客户端请求有误')
+            message.error('客户端请求错误')
         }
         this.setState({
             goodsList: res.data

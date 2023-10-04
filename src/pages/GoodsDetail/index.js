@@ -40,7 +40,7 @@ class GoodsDetail extends Component {
         } else if (res.code !== 200) {
             message.error(res.msg);
         } else {
-            message.error('客户端请求有误');
+            message.error('客户端请求错误');
         }
         // 库存不大于0，则秒杀按钮置灰
         if (!this.state.stockCount > 0) {
@@ -67,7 +67,7 @@ class GoodsDetail extends Component {
         } else if (res.msg) {
             message.error(res.msg);
         } else {
-            message.error("客户端请求有误");
+            message.error("客户端请求错误");
         }
     }
 
@@ -83,7 +83,7 @@ class GoodsDetail extends Component {
         } else if (res.msg) {
             message.error(res.msg);
         } else {
-            message.error("客户端请求有误");
+            message.error("客户端请求错误");
         }
     }
 
@@ -111,7 +111,7 @@ class GoodsDetail extends Component {
         } else if (res.msg) {
             message.error(res.msg);
         } else {
-            message.error("客户端请求有误");
+            message.error("客户端请求错误");
         }
     }
 

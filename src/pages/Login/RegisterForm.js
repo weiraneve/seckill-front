@@ -86,7 +86,7 @@ class RegisterForm extends React.Component {
         } else if (res) {
             message.error(res.msg)
         } else {
-            message.error('客户端请求有误')
+            message.error('客户端请求错误')
         }
     };
 
