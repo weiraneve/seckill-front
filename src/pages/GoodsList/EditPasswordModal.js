@@ -33,7 +33,7 @@ class EditPasswordModal extends React.Component {
         });
         if (res.code === 200) {
             message.success('修改密码成功');
-        } else if (res.code === 500800 || res.code === 500801) {
+        } else if (res.code !== 200) {
             message.error(res.msg);
         } else {
             message.error('客户端请求错误')

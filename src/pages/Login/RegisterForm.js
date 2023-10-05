@@ -77,13 +77,7 @@ class RegisterForm extends React.Component {
         hide();
         if (res.code === 200) {
             message.success('注册成功')
-        } else if (res.code === 500600) {
-            message.error('手机号已经被注册')
-        } else if (res.code === 500601) {
-            message.error('用户名已经被注册')
-        } else if (res.code === 500602) {
-            message.error('身份证已经被注册')
-        } else if (res) {
+        } else if (res.code !== 200) {
             message.error(res.msg)
         } else {
             message.error('客户端请求错误')

@@ -64,7 +64,7 @@ class GoodsDetail extends Component {
         if (res.code === 200) {
             let path = res.data;
             this.doSeckill(path).then();
-        } else if (res.msg) {
+        } else if (res.code !== 200) {
             message.error(res.msg);
         } else {
             message.error("客户端请求错误");
@@ -80,7 +80,7 @@ class GoodsDetail extends Component {
         })
         if (res.code === 200) {
             this.getSeckillResult(goodsId).then();
-        } else if (res.msg) {
+        } else if (res.code !== 200) {
             message.error(res.msg);
         } else {
             message.error("客户端请求错误");
@@ -108,7 +108,7 @@ class GoodsDetail extends Component {
                 default:
                     break;
             }
-        } else if (res.msg) {
+        } else if (res.code !== 200) {
             message.error(res.msg);
         } else {
             message.error("客户端请求错误");
