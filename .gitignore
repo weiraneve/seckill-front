@@ -1,4 +1,4 @@
 /.idea/
 /node_modules/
-/build/
+/src-tauri/build/
 .DS_Store
