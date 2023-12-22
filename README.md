@@ -32,6 +32,9 @@
 1. 修改根目录下 .env 全局文件中的变量。变量PORT是控制启动端口，与package.json文件中的启动脚本语句结合使用，可改为3000，无妨使用。.env文件中的REACT_APP_BASE_URL为请求后端微服务框架网关URL
 2. 终端输入```yarn start```
 
+## tauri start
+`npm install` then `npm run build` then `npm run tauri dev`
+
 本地运行项目，一般会自动打开游览器直接访问。
 
 # 解决BUG
