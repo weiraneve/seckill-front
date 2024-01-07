@@ -4,7 +4,7 @@ import '../../styles/list.css';
 import {get} from '../../common/ajax'
 import {message, Button} from "antd";
 import {logout} from "../../common/session";
-import EditPasswordModal from './EditPasswordModal'
+import EditPasswordModal from './EditPasswordModal.jsx'
 
 class GoodsList extends Component {
 

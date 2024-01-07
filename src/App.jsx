@@ -1,11 +1,11 @@
 import React from 'react'
 import {Switch, Route, withRouter, Redirect} from 'react-router-dom'
-import PrivateRoute from './components/PrivateRoute'
+import PrivateRoute from './components/PrivateRoute/index.jsx'
 import './assets/iconfont/iconfont.css'
-import GoodsList from './pages/GoodsList'
-import GoodsDetail from './pages/GoodsDetail'
-import OrderList from './pages/OrderList'
-import Login from './pages/Login'
+import GoodsList from './pages/GoodsList/index.jsx'
+import GoodsDetail from './pages/GoodsDetail/index.jsx'
+import OrderList from './pages/OrderList/index.jsx'
+import Login from './pages/Login/index.jsx'
 
 @withRouter
 class App extends React.Component {

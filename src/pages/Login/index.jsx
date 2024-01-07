@@ -3,9 +3,9 @@ import '../../styles/login.less'
 import { isAuthenticated } from '../../common/session'
 import { withRouter } from 'react-router-dom'
 import {Helmet} from "react-helmet";
-import RegisterForm from'./RegisterForm'
-import LoginForm from'./LoginForm'
-import Background from'../../components/Background'
+import RegisterForm from './RegisterForm.jsx'
+import LoginForm from './LoginForm.jsx'
+import Background from '../../components/Background/index.jsx'
 
 @withRouter
 class Login extends React.Component {
@@ -36,7 +36,7 @@ class Login extends React.Component {
             code: null
         })
     };
-    
+
     render() {
         const { show } = this.state;
         return (
@@ -46,7 +46,7 @@ class Login extends React.Component {
                     <title>客户登录界面</title>
                 </Helmet>
 
-                <Background url={require('../../assets/images/bg.jpg')}>
+                <Background url={'/assets/images/bg.jpg'}>
                     { <div className="login-container">
                         <div className={`box ${show === 'login' ? 'active' : ''}`}>
                             <LoginForm toggleShow={this.toggleShow} />

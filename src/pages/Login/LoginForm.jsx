@@ -1,7 +1,7 @@
 import React from 'react'
 import {Form, Input, Row, Col, message} from 'antd'
 import {randomNum, sm3Pass} from '../../common/util'
-import PromptBox from '../../components/PromptBox/index'
+import PromptBox from '../../components/PromptBox/index.jsx'
 import { withRouter } from 'react-router-dom'
 import { post } from '../../common/ajax'
 import {authenticateSuccess} from "../../common/session";

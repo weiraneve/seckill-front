@@ -1,9 +1,9 @@
 import 'whatwg-fetch'
-import { message } from 'antd'
+import {message} from 'antd'
 import {isAuthenticated, logout} from './session'
 import history from './history'
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || '';
+const BASE_URL = import.meta.env.VITE_BASE_URL || '';
 
 /**
  * 处理url 带参数
@@ -91,11 +91,11 @@ export async function get(url, param) {
                 message.error(result.msg || '网络错误');
             }
         } else if (response.status === 401 || response.status === 403) {
-                logout();
-                history.push('/login');
-                message.error('登录失效')
-            }
+            logout();
+            history.push('/login');
+            message.error('登录失效')
         }
+    }
     return result;
 }
 
@@ -136,9 +136,9 @@ export async function post(url, param) {
                 message.error(result.msg || '网络错误')
             }
         } else if (response.status === 401 || response.status === 403) {
-                logout();
-                history.push('/login');
-                message.error('登录失效')
+            logout();
+            history.push('/login');
+            message.error('登录失效')
         }
     }
     return result;
@@ -221,7 +221,7 @@ export async function put(url, param) {
     }
     const result = response.json();
     if (!response.ok) {
-        if(response.status === 200) {
+        if (response.status === 200) {
             if (result.code !== 200) {
                 message.error(result.msg || '网络错误')
             }
@@ -229,10 +229,11 @@ export async function put(url, param) {
             logout();
             history.push('/login');
             message.error('登录失效')
-            }
         }
+    }
     return result;
 }
+
 // PUT与PATCH区别，PUT是修改了整条记录,不变的字段也重写一遍,不过重写的值与原来相同。而PATCH只是单独修改一个字段。
 
 // 删除
@@ -261,7 +262,7 @@ export async function del(url, param) {
     }
     const result = response.json();
     if (!response.ok) {
-        if(response.status === 200) {
+        if (response.status === 200) {
             if (result.code !== 200) {
                 message.error(result.msg || '网络错误')
             }
@@ -269,8 +270,8 @@ export async function del(url, param) {
             logout();
             history.push('/login');
             message.error('登录失效')
-            }
         }
+    }
     return result;
 }
 
