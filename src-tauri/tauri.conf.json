@@ -1,7 +1,7 @@
 {
   "build": {
-    "beforeBuildCommand": "npm run build",
-    "beforeDevCommand": "npm run start",
+    "beforeBuildCommand": "yarn build",
+    "beforeDevCommand": "yarn dev",
     "devPath": "http://localhost:3000",
     "distDir": "../build",
     "withGlobalTauri": true
@@ -50,10 +50,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 1200,
         "resizable": true,
         "title": "seckill-front",
-        "width": 800
+        "width": 1600
       }
     ]
   }
