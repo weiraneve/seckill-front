@@ -118,7 +118,8 @@ class LoginForm extends React.Component {
                 <h3 className="title">客户登录</h3>
                 <Form hideRequiredMark>
                     <Form.Item
-                        help={<PromptBox info={getFieldError('mobile') && getFieldError('mobile')[0]} />}
+                        help={<PromptBox style={{marginTop: '60px'}}
+                                         info={getFieldError('mobile') && getFieldError('mobile')[0]}/>}
                         style={{ marginBottom: 10 }}
                         wrapperCol={{ span: 20, pull: focusItem === 0 ? 1 : 0 }}
                         labelCol={{ span: 3, pull: focusItem === 0 ? 1 : 0 }}
@@ -143,7 +144,8 @@ class LoginForm extends React.Component {
                         )}
                     </Form.Item>
                     <Form.Item
-                        help={<PromptBox info={getFieldError('password') && getFieldError('password')[0]} />}
+                        help={<PromptBox style={{marginTop: '140px'}}
+                                         info={getFieldError('password') && getFieldError('password')[0]}/>}
                         style={{ marginBottom: 10 }}
                         wrapperCol={{ span: 20, pull: focusItem === 1 ? 1 : 0 }}
                         labelCol={{ span: 3, pull: focusItem === 1 ? 1 : 0 }}
@@ -163,7 +165,9 @@ class LoginForm extends React.Component {
                         )}
                     </Form.Item>
                     <Form.Item
-                        help={<PromptBox info={getFieldError('captcha') && getFieldError('captcha')[0]} />}
+                        help={<PromptBox
+                            style={{marginTop: '240px'}}
+                            info={getFieldError('captcha') && getFieldError('captcha')[0]}/>}
                         style={{ marginBottom: 20 }}
                         wrapperCol={{ span: 20, pull: focusItem === 2 ? 1 : 0 }}
                         labelCol={{ span: 3, pull: focusItem === 2 ? 1 : 0 }}
