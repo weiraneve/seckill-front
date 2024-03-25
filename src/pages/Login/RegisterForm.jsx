@@ -130,8 +130,7 @@ class RegisterForm extends React.Component {
                 <h3 className="title">客户注册</h3>
                 <Form hideRequiredMark>
                     <Form.Item
-                        help={<PromptBox style={{marginTop: '60px'}}
-                                         info={getFieldError('registerMobile') && getFieldError('registerMobile')[0]}/>}
+                        help={<PromptBox info={getFieldError('registerMobile') && getFieldError('registerMobile')[0]}/>}
                         style={{marginBottom: 10}}
                         wrapperCol={{span: 20, pull: focusItem === 0 ? 1 : 0}}
                         labelCol={{span: 3, pull: focusItem === 0 ? 1 : 0}}
@@ -157,8 +156,8 @@ class RegisterForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        help={<PromptBox style={{marginTop: '140px'}}
-                                         info={getFieldError('registerPassword') && getFieldError('registerPassword')[0]}/>}
+                        help={<PromptBox
+                            info={getFieldError('registerPassword') && getFieldError('registerPassword')[0]}/>}
                         style={{marginBottom: 10}}
                         wrapperCol={{span: 20, pull: focusItem === 1 ? 1 : 0}}
                         labelCol={{span: 3, pull: focusItem === 1 ? 1 : 0}}
@@ -185,8 +184,8 @@ class RegisterForm extends React.Component {
                         )}
                     </Form.Item>
                     <Form.Item
-                        help={<PromptBox style={{marginTop: '210px'}}
-                                         info={getFieldError('confirmPassword') && getFieldError('confirmPassword')[0]}/>}
+                        help={<PromptBox
+                            info={getFieldError('confirmPassword') && getFieldError('confirmPassword')[0]}/>}
                         style={{marginBottom: 10}}
                         wrapperCol={{span: 20, pull: focusItem === 2 ? 1 : 0}}
                         labelCol={{span: 3, pull: focusItem === 2 ? 1 : 0}}
@@ -218,8 +217,7 @@ class RegisterForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        help={<PromptBox style={{marginTop: '300px'}}
-                                         info={getFieldError('captcha') && getFieldError('captcha')[0]}/>}
+                        help={<PromptBox info={getFieldError('captcha') && getFieldError('captcha')[0]}/>}
                         style={{marginBottom: 10}}
                         wrapperCol={{span: 20, pull: focusItem === 2 ? 1 : 0}}
                         labelCol={{span: 3, pull: focusItem === 2 ? 1 : 0}}
