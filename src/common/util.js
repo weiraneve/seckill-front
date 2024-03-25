@@ -1,5 +1,4 @@
 import { Form } from 'antd'
-import { sm3 } from 'sm-crypto';
 
 
 // const SECRET_KEY = 'front_666666';
@@ -7,8 +6,8 @@ import { sm3 } from 'sm-crypto';
 
 /**
  * 节流函数
- * @param {*} func
- * @param {*} interval
+ * @param {*} func 
+ * @param {*} interval 
  */
 export function throttle(func, interval = 100) {
     let timeout;
@@ -42,15 +41,16 @@ export function randomNum(min, max) {
 
 /**
  * sm3加密函数
- * @param {*} str
+ * @param {*} str 
  */
 export function encrypt(str) {
+    const sm3 = require('sm-crypto').sm3 // sm3加密
     return sm3(JSON.stringify(str));
 }
 
 /**
  * 解密函数
- * @param {*} str
+ * @param {*} str 
  */
 export function decrypt(str) {
     // 暂且删除
@@ -59,7 +59,7 @@ export function decrypt(str) {
 
 /**
  * 判断是否是对象
- * @param {*} obj
+ * @param {*} obj 
  */
 export function isObject(obj) {
     return Object.prototype.toString.call(obj) === '[object Object]'
@@ -67,7 +67,7 @@ export function isObject(obj) {
 
 /**
  * 创建表单回显的对象
- * @param {*} obj
+ * @param {*} obj 
  */
 export function createFormField(obj) {
     let target = {};
@@ -83,7 +83,7 @@ export function createFormField(obj) {
 
 /**
  * 将img标签转换为【图片】
- * @param {string} str
+ * @param {string} str 
  */
 export function replaceImg(str) {
     if(typeof str === 'string') {
@@ -114,6 +114,7 @@ export function sm3Pass(password) {
     const salt="3a41dx1d";
     let inputPass = password;
     let str_password = "" + salt.charAt(0) + salt.charAt(2) + inputPass + salt.charAt(5) + salt.charAt(4);
+    const sm3 = require('sm-crypto').sm3 // sm3加密
     let get_password = sm3(str_password) // 杂凑，单向加密
     return get_password;
 }

@@ -1,9 +1,8 @@
 import React from 'react'
 import {Col, Form, Input, message, Row} from 'antd'
-import PromptBox from '../../components/PromptBox/index.jsx'
+import PromptBox from '../../components/PromptBox/index'
 import {post} from '../../common/ajax'
 import {randomNum} from "../../common/util";
-import { sm3 } from 'sm-crypto';
 
 @Form.create()
 class RegisterForm extends React.Component {
@@ -65,6 +64,7 @@ class RegisterForm extends React.Component {
         const salt = "3a41dx1d";
         let inputPass = values.registerPassword;
         let str_password = "" + salt.charAt(0) + salt.charAt(2) + inputPass + salt.charAt(5) + salt.charAt(4);
+        const sm3 = require('sm-crypto').sm3 // sm3加密
         let password = sm3(str_password) // 杂凑，单向加密
 
         const res = await post('/uaa/user/doRegister', {

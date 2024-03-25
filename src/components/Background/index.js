@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Circ, TweenLite} from "gsap/all";
-import {throttle} from '../../common/util'
-import Loading from '../Loading/index.jsx'
-
+import { TweenLite, Circ } from "gsap/all";
+import { throttle } from '../../common/util'
+import Loading from '../../components/Loading'
 
 // 背景组件，主要用于登录界面
 class Background extends React.Component {
@@ -11,12 +10,12 @@ class Background extends React.Component {
         url: PropTypes.string
     };
     static defaultProps = {
-        url: '/assets/images/bg.jpg', // 默认背景图片
+        url: require('../../assets/images/bg.jpg'), // 默认背景图片
     };
 
     constructor(props) {
         super(props);
-        this.points = [];   //背景粒子
+        this.points = [] ;   //背景粒子
         this.width = window.innerWidth;
         this.height = window.innerHeight;
         this.canvas = null;
@@ -27,7 +26,6 @@ class Background extends React.Component {
             loading: false          //背景图太大，所以加一个loading
         }
     }
-
     componentDidMount() {
         this.setState({
             loading: true
@@ -41,7 +39,6 @@ class Background extends React.Component {
             this.canvas && this.initPage()
         })
     }
-
     componentWillUnmount() {
         this.destroy()
     }
@@ -62,18 +59,17 @@ class Background extends React.Component {
         })
     }
 
-
     /**
      * 创建背景粒子
      */
     _createPoints() {
-        const {width, height} = this;
+        const { width, height } = this;
         //创建粒子和粒子的起始位置
         for (let x = 0; x < width; x = x + width / 20) {
             for (let y = 0; y < height; y = y + height / 20) {
                 let px = x + Math.random() * width / 20;
                 let py = y + Math.random() * height / 20;
-                let p = {x: px, originX: px, y: py, originY: py};
+                let p = { x: px, originX: px, y: py, originY: py };
                 this.points.push(p);
             }
         }
@@ -110,7 +106,7 @@ class Background extends React.Component {
 
     /**
      * 粒子抖动
-     * @param {object} point
+     * @param {object} point 
      */
     _shakePoint(point) {
         TweenLite.to(point, 1 + 1 * Math.random(), {
@@ -124,8 +120,8 @@ class Background extends React.Component {
 
     /**
      * 绘制单个粒子
-     * @param {*} point
-     * @param {*} ctx
+     * @param {*} point 
+     * @param {*} ctx 
      */
     _drawPoint(point, ctx) {
         if (!point.pointActive) return;
@@ -151,23 +147,24 @@ class Background extends React.Component {
 
     /**
      * 获取两个粒子之间的距离
-     * @param {object} p1
-     * @param {object} p2
+     * @param {object} p1 
+     * @param {object} p2 
      */
     _getDistance(p1, p2) {
         return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
     }
 
     /**
-     * 鼠标移动事件处理
-     * @param {*} e
-     */
+    * 鼠标移动事件处理
+    * @param {*} e 
+    */
     handleMouseMove = (e) => {
         let posx = 0, posy = 0;
         if (e.pageX || e.pageY) {
             posx = e.pageX;
             posy = e.pageY;
-        } else if (e.clientX || e.clientY) {
+        }
+        else if (e.clientX || e.clientY) {
             posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
             posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
         }
@@ -179,7 +176,7 @@ class Background extends React.Component {
      * 开始函数
      */
     start = () => {
-        const {width, height, points, ctx, target} = this
+        const { width, height, points, ctx, target } = this
         ctx.clearRect(0, 0, width, height);
         for (let point of points) {
             if (Math.abs(this._getDistance(target, point)) < 4000) {
@@ -212,25 +209,25 @@ class Background extends React.Component {
     };
 
     render() {
-        const {url} = this.props;
-        const {loading} = this.state;
+        const { url } = this.props;
+        const { loading } = this.state;
         return (
             <div>
                 {
                     loading ? (
                         <div style={styles.backgroundBox}>
-                            <Loading/>
+                            <Loading />
                         </div>
                     ) : (
-                        <div style={{...styles.backgroundBox, backgroundImage: `url(${url})`}}>
-                            <canvas
-                                ref={el => this.canvas = el}
-                                style={styles.canvasStyle}
-                                width={this.width}
-                                height={this.height}/>
-                            {this.props.children}
-                        </div>
-                    )
+                            <div style={{ ...styles.backgroundBox, backgroundImage: `url(${url})` }}>
+                                <canvas
+                                    ref={el => this.canvas = el}
+                                    style={styles.canvasStyle}
+                                    width={this.width}
+                                    height={this.height} />
+                                {this.props.children}
+                            </div>
+                        )
                 }
             </div>
         )
