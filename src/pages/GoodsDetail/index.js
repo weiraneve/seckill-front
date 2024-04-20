@@ -188,8 +188,8 @@ class GoodsDetail extends Component {
                                     <button type="button" className="btn"  id="buyButton">立即秒杀</button>
                                 </Popconfirm>
                             </div>
+                            <button className="btn" type="button" id="backButton" onClick={() => this.toGoodsList()}>返回商品列表</button>
                         </div>
-                        <button className="btn" type="button" id="backButton" onClick={() => this.toGoodsList()}>返回商品列表</button>
                     </div>
                 </div>
 
